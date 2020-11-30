@@ -41,7 +41,7 @@ def bak_sdk3(normal_log_time,apache_log_time):
 
 
 if __name__ == '__main__':
-    #pass
+    pass
     yesterday = datetime.today()+timedelta(-1)
     normal_log_time = yesterday.strftime('%Y-%m-%d')
     apache_log_time = yesterday.strftime('%Y%m%d')
