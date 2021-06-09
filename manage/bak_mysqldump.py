@@ -89,7 +89,12 @@ def district_bakup(host):
                     error_db_list.append(db_name)
                     continue
                 old_time = time.strftime("%Y%m%d",time.gmtime(time.time()-out_time))
-                os.system("python /data/mysqldump/upload_file.py %s %s" % (path,db_name))
+                #此方式针对亚马逊的S3对象存储
+                #os.system("python /data/mysqldump/upload_file.py %s %s" % (path,db_name))
+                #此方式针对阿里的OSS对象存储
+                #os.system("/usr/local/bin/ossutil64 cp -rf %s %s" % (district_back_path,cos_dis_path))
+                #此方式针对腾讯的COS对象存储
+                #os.system("/usr/local/bin/coscmd upload -r %s %s" % (district_back_path,cos_dis_path))
                 os.system("rm -f %s*.sql.gz" % (district_back_path+db_name+"/"))
     
         cur.close()                      # 关闭游标
@@ -136,7 +141,12 @@ def base_bakup(host):
                     error_db_list.append(db_name)
                     continue
                 old_time = time.strftime("%Y%m%d",time.gmtime(time.time()-out_time))
-                os.system("python /data/mysqldump/upload_file.py %s %s" % (path,db_name))
+                #此方式针对亚马逊的S3对象存储
+                #os.system("python /data/mysqldump/upload_file.py %s %s" % (path,db_name))
+                #此方式针对阿里的OSS对象存储
+                #os.system("/usr/local/bin/ossutil64 cp -rf %s %s" % (base_back_path,cos_base_path))
+                #此方式针对腾讯的COS对象存储
+                #os.system("/usr/local/bin/coscmd upload -r %s %s" % (base_back_path,cos_base_path))
                 os.system("rm -f %s*.sql.gz" % (base_back_path+db_name+"/"))
     
         cur.close()                      # 关闭游标
